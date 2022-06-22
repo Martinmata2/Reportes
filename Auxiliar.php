@@ -120,14 +120,14 @@ class Auxiliar extends Query
     			<div class='col-md-4'>
     				<div class='form-floating mb-3'>
                         <input class='hour' type='hidden' id='hourfrom' size='3' value='00:01:00' name='hourfrom'/>
-    					<input class='form-control lineonly datepicker' autocomplete='off' type='text' id='datefrom' name='datefrom'/>
+    					<input class='form-control datepicker' autocomplete='off' type='text' id='datefrom' name='datefrom'/>
     					<label for='datefrom'> Desde</label>
     				</div>
     			</div>
     			<div class='col-md-4'>
     				<div class='form-floating mb-3'>
                         <input class='hour' type='hidden' id='hourto' size='3' value='23:59:59' name='hourto'/>
-    					<input class='form-control lineonly datepicker' autocomplete='off' type='text' id='dateto' /> 
+    					<input class='form-control datepicker' autocomplete='off' type='text' id='dateto' /> 
                         <label for='dateto'> Hasta</label>
     				</div>
     			</div>
