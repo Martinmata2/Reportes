@@ -69,11 +69,11 @@ class Auxiliar extends Query
 	 */
 	public function reportes($inicio)
 	{
-	    return "<a href='".$inicio."reportes/Productos.php' class='button'>Flujo Productos en Ventas</a> | 
-                <a href='".$inicio."inventario/Reporte/Compras/Productos.php' class='button'>Flujo Productos en Compras</a> | 
-                <a href='".$inicio."inventario/Reporte/Salidas/Productos.php' class='button'>Flujo Productos en Movimientos</a> |
-                <a href='".$inicio."reportes/FLUJO/Monetario.php' class='button'>Flujo Moneratio</a> | 
-                <a href='".$inicio."reportes/Iva.php' class='button'>Ventas IVA</a>"; 
+	    return "<a href='".$inicio."Reportes/Venta_Productos.php' class='btn btn-primary'>Flujo Productos en Ventas</a> | 
+                <a href='".$inicio."Reportes/Compras_Productos.php' class='btn btn-primary'>Flujo Productos en Compras</a> | 
+                <a href='".$inicio."Reportes/Salidas_Productos.php' class='btn btn-primary'>Flujo Productos en Movimientos</a> |
+                <a href='".$inicio."Reportes/Monetario.php' class='btn btn-primary'>Flujo Moneratio</a> | 
+                <a href='".$inicio."Reportes/Ventas_Iva.php' class='btn btn-primary'>Ventas IVA</a>"; 
 	}
 	
 	public function mespasadol($campofecha)
@@ -196,6 +196,6 @@ class Auxiliar extends Query
 	
 	public function query($campos, $tabla, $base_datos, $where = "0", $orderby = "0", $groupby = "0", $limit = "0", $usuario = "guess")
 	{
-	    return $this->consulta($campos, $tabla, $base_datos, $where, $orderby, $groupby, $limit, $usuario);
+	    return $this->consulta($campos, $tabla, $where, $orderby, $groupby, $limit, $usuario);
 	}
 }
