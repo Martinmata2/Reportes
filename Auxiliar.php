@@ -166,22 +166,20 @@ class Auxiliar extends Query
 	public function venta($rango = "mensual", $fecha = "CURRENT_DATE")
 	{	   
 	    switch ($rango) {
-	        case "anual":
-	           
-                $respuesta = $this->consulta("FORMAT(SUM(FacTotal),2) as total", "ventas", $this->base_datos,
-                "YEAR(FacFecha) = YEAR('$fecha')");
+	        case "anual":	           
+                $respuesta = $this->consulta("FORMAT(SUM(FacTotal),2) as total", "ventas",
+                "YEAR(FacFecha) = YEAR($fecha)");
                 break;
 	        case "promedio":
-	            $respuesta = $this->consulta("FORMAT(SUM(FacTotal)/DAYOFYEAR('$fecha'),2) as total", "ventas", $this->base_datos,
-	            "YEAR(FacFecha) = YEAR('$fecha')");
-	            
+	            $respuesta = $this->consulta("FORMAT(SUM(FacTotal)/DAYOFYEAR($fecha),2) as total", "ventas", 
+	            "YEAR(FacFecha) = YEAR($fecha)");	            
 	            break;
 	        case "mensual":
-	            $respuesta = $this->consulta("FORMAT(SUM(FacTotal),2) as total", "ventas", $this->base_datos,
-	            "YEAR(FacFecha) = YEAR('$fecha') and month(FacFecha) = Month('$fecha')");	            
+	            $respuesta = $this->consulta("FORMAT(SUM(FacTotal),2) as total", "ventas", 
+	            "YEAR(FacFecha) = YEAR($fecha) and month(FacFecha) = Month($fecha)");	            
 	        break;
 	        case "diaria":
-	            $respuesta = $this->consulta("FORMAT(SUM(FacTotal),2) as total", "ventas", $this->base_datos,
+	            $respuesta = $this->consulta("FORMAT(SUM(FacTotal),2) as total", "ventas", 
 	            "date(FacFecha) = date('$fecha')");
 	            break;
 	        default:
@@ -194,6 +192,21 @@ class Auxiliar extends Query
 		else return 0;
 	}
 	
+	/**
+	 * lista de productos mas vendidos
+	 * @param string $periodo
+	 * @param int $cantidad
+	 * @return number|object[]
+	 */
+	public function masvendido(string $periodo, int $cantidad)
+	{
+	    $resultado = $this->consulta("SUM(DdeCantidad) as cantidad, ProDescripcion",
+	        "ventas inner join ventadetalles on FacID = DdeDocumento
+             inner join productos on DdeProducto = ProID",
+	        "date(FacFecha) between $periodo","cantidad desc","DdeProducto",$cantidad );
+	    
+	    return $resultado;
+	}
 	public function query($campos, $tabla, $base_datos, $where = "0", $orderby = "0", $groupby = "0", $limit = "0", $usuario = "guess")
 	{
 	    return $this->consulta($campos, $tabla, $where, $orderby, $groupby, $limit, $usuario);
