@@ -7,7 +7,7 @@ class Flujo
     public function Monetario($arguments = null)
     {
         return array(
-            array("title"=> "ID",               "name"=>"ActUsuario",           "editable"=>false,          "width"=>"20",          "hidden"=>true,             "export"=>false),
+            array("title"=> "ID",               "name"=>"ActUsuario",           "editable"=>false,          "width"=>"20",          "hidden"=>true,             "hidedlg"=>true,            "export"=>false),
             array("title"=> "Fecha",            "name"=>"ActFecha",             "editable"=>false,          "width"=>"40"),
             array("title"=>"Usuario",           "name"=>"ActUsuario",           "editable"=>false,          "width"=>"40",          "align"=>"center",  
                 "editoptions"=>array("value"=>$arguments["usuarios"]),          "edittype"=>"select",       "op"=>"eq",             "formatter"=>"select",
